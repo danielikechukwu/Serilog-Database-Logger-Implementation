@@ -1,4 +1,5 @@
 using Serilog;
+using SerilogDatabaseLoggerImplementation.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +16,9 @@ builder.Host.UseSerilog((context, services, configuration) =>
     // Reads Serilog settings from appsettings.json (or other configuration sources)
     configuration.ReadFrom.Configuration(context.Configuration);
 });
+
+//Registering the Background service
+builder.Services.AddHostedService<LogCleanupService>();
 
 var app = builder.Build();
 
