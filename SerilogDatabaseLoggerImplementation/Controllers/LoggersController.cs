@@ -11,7 +11,7 @@ namespace SerilogDatabaseLoggerImplementation.Controllers
 
         public LoggersController(ILogger<LoggersController> logger)
         {
-            logger = _logger;
+            _logger = logger;
         }
 
         [HttpGet("all-logs")]
